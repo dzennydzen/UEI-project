@@ -1,0 +1,257 @@
+@use "../variables" as *;
+
+.mobile-menu {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  z-index: 1001;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  inline-size: min(100%, 297px);
+  max-inline-size: 297px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  background-color: $white;
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform 0.5s ease,
+    visibility 0.3s ease;
+
+  &.is-open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__container {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    inline-size: 100%;
+    padding-block: 30px;
+    padding-inline: 20px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: 20px;
+  }
+
+  &__brand-icon,
+  &__close-icon {
+    inline-size: 24px;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  &__close {
+    display: flex;
+    flex-shrink: 0;
+    color: $icon-gray;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: $base-gray;
+    text-align: start;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $black;
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__item--catalog {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__catalog-toggle {
+    &[aria-expanded="true"] {
+      color: $black;
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    &[aria-expanded="true"] + .mobile-menu__catalog-line {
+      block-size: 1px;
+      margin-block: 10px;
+      transform: scaleX(1);
+      transition:
+        transform 0.35s ease,
+        margin-block 0.35s ease,
+        block-size 0s;
+    }
+  }
+
+  &__catalog-line {
+    display: block;
+    inline-size: 100%;
+    block-size: 0;
+    margin-block: 0;
+    background-color: $base-green;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition:
+      transform 0.35s ease,
+      margin-block 0.35s ease,
+      block-size 0s linear 0.5s;
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    inline-size: 7px;
+    block-size: 6px;
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+  }
+
+  &__catalog-toggle[aria-expanded="true"] .mobile-menu__arrow,
+  &__catalog-lab[aria-expanded="true"] .mobile-menu__arrow {
+    transform: rotate(0deg);
+  }
+
+  &__catalog {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__catalog-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__catalog-lab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    inline-size: 100%;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 140%;
+    color: $base-gray;
+    text-align: start;
+    transition: all 0.3s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $black;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      color: $black;
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__services {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-inline-start: 20px;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__service-link {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 140%;
+    color: $base-gray;
+    transition: color 0.3s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $base-green;
+      }
+    }
+  }
+
+  &__footer {
+    margin-block-start: 30px;
+    border-block-start: 1px solid $border-dark;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-block: 20px;
+  }
+
+  &__contact-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    color: $black;
+    transition: color 0.3s ease;
+
+    &--phone {
+      font-weight: 600;
+    }
+
+    &--mail {
+      font-weight: 500;
+    }
+
+    &:hover {
+      color: $base-green;
+    }
+  }
+
+  &__contact-icon {
+    flex-shrink: 0;
+    inline-size: 17px;
+    aspect-ratio: 1;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__btn {
+    inline-size: min(100%, 195px);
+  }
+
+  &__diagnostics-icon {
+    inline-size: 20px;
+    aspect-ratio: 1;
+  }
+}
+
+body.is-menu-open {
+  overflow: hidden;
+}

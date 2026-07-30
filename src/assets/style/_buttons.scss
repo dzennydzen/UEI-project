@@ -1,0 +1,98 @@
+@use "./functions.scss" as *;
+@use "./variables.scss" as *;
+
+.btn {
+  --btn-bg: transparent;
+  --btn-hover-bg: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+  border-color: var(--btn-bg);
+  background-color: var(--btn-bg);
+  font-weight: 600;
+  text-align: center;
+  text-wrap: nowrap;
+  transition: all 0.3s ease;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    pointer-events: none;
+    transform: translateX(-100px) skewX(-15deg);
+  }
+
+  &::before {
+    width: 60px;
+    background: rgba($white, 0.5);
+    filter: blur(30px);
+    opacity: 0.5;
+  }
+
+  &::after {
+    left: 30px;
+    width: 30px;
+    background: rgba($white, 0.2);
+    filter: blur(5px);
+  }
+
+  &:hover {
+    border-color: var(--btn-hover-bg);
+    background-color: var(--btn-hover-bg);
+
+    &::before {
+      opacity: 1;
+    }
+
+    &::before,
+    &::after {
+      transform: translateX(300px) skewX(-15deg);
+      transition: all 0.9s ease;
+    }
+  }
+
+  &--basic {
+    padding-block: fluid-clamp(8px, 11px);
+    padding-inline: fluid-clamp(14px, 20px);
+    font-size: fluid-clamp(13px, 16px);
+  }
+
+  &--has-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: fluid-clamp(7px, 10px);
+  }
+
+  &--light-gray {
+    --btn-bg: #{$light-gray};
+    --btn-hover-bg: #{$dark-blue};
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &--consultation {
+    --btn-hover-bg: #{$base-green};
+  }
+
+  &--dark-blue {
+    --btn-bg: #{$dark-blue};
+    --btn-hover-bg: #{$base-green};
+    color: $white;
+  }
+
+  &--green {
+    --btn-bg: #{$base-green};
+    --btn-hover-bg: #{$dark-blue};
+    color: $white;
+  }
+}

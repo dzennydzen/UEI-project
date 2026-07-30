@@ -1,0 +1,212 @@
+@use "../functions" as *;
+@use "../variables" as *;
+
+.services {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: fluid-clamp(40px, 60px);
+    padding-block: fluid-clamp(90px, 120px);
+
+    @media (max-width: 1500px) {
+      padding-inline: fluid-clamp(10px, 38px);
+    }
+  }
+
+  &__lead {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: fluid-clamp(10px, 20px);
+  }
+
+  &__lead-text {
+    font-size: fluid-clamp(16px, 18px);
+    font-weight: 600;
+    line-height: 150%;
+    color: $base-gray;
+  }
+
+  &__title {
+    font-size: fluid-clamp(30px, 44px);
+    font-weight: 600;
+    line-height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: fluid-clamp(11px, 16px);
+  }
+}
+
+.service-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: fluid-clamp(20px, 40px);
+  inline-size: 100%;
+  padding: fluid-clamp(20px, 40px);
+  overflow: hidden;
+  border-radius: fluid-clamp(10px, 20px);
+  background: $surface-muted;
+
+  &__media {
+    flex-shrink: 0;
+    inline-size: fluid-clamp(200px, 368px);
+    aspect-ratio: 368 / 350;
+  }
+
+  &__video {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    object-fit: contain;
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    min-inline-size: 0;
+  }
+
+  &__lead-text {
+    font-size: fluid-clamp(16px, 18px);
+    font-weight: 600;
+    line-height: 150%;
+    color: $dark-blue;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: fluid-clamp(9px, 20px);
+    margin-block-start: fluid-clamp(10px, 20px);
+    font-size: fluid-clamp(18px, 21px);
+    font-weight: 500;
+    line-height: 120%;
+    color: $black;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    inline-size: fluid-clamp(15px, 25px);
+    aspect-ratio: 1;
+  }
+
+  &__list {
+    columns: 2;
+    column-gap: fluid-clamp(24px, 72px);
+    inline-size: 100%;
+    padding-block: fluid-clamp(16px, 32px);
+  }
+
+  &__list-item {
+    margin-block-end: fluid-clamp(8px, 12px);
+    break-inside: avoid;
+  }
+
+  &__list-link {
+    font-size: fluid-clamp(14px, 18px);
+    font-weight: 400;
+    line-height: 140%;
+    color: $base-gray;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $base-green;
+
+      .service-card__list-link-arrow {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &__list-link-arrow {
+    display: inline-block;
+    inline-size: fluid-clamp(15px, 20px);
+    margin-inline-start: 4px;
+    aspect-ratio: 1;
+    vertical-align: -0.35em;
+    transition: transform 0.3s ease;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: fluid-clamp(165px, 233px);
+    aspect-ratio: 233 / 60;
+    padding-block: fluid-clamp(15px, 20px);
+    padding-inline: fluid-clamp(20px, 30px);
+    font-size: fluid-clamp(16px, 18px);
+  }
+
+  @media (max-width: 1130px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: fluid-clamp(16px, 28px);
+
+    .service-card__media {
+      inline-size: min(100%, 320px);
+      margin-inline: auto;
+    }
+
+    .service-card__content {
+      align-items: stretch;
+    }
+
+    .service-card__list {
+      column-gap: fluid-clamp(20px, 40px);
+    }
+
+    .btn {
+      align-self: flex-start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: fluid-clamp(16px, 24px);
+
+    .service-card__media {
+      inline-size: min(100%, 260px);
+    }
+
+    .service-card__list {
+      columns: 1;
+      padding-block: fluid-clamp(16px, 24px);
+    }
+
+    .btn {
+      inline-size: 100%;
+      max-inline-size: 280px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card__video {
+    display: none;
+  }
+
+  .service-card__media {
+    aspect-ratio: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .services__list-item:nth-child(1) .service-card__media {
+    background-image: url("../../img/services/img--diagnostics.webp");
+  }
+
+  .services__list-item:nth-child(2) .service-card__media {
+    background-image: url("../../img/services/img--physics.webp");
+  }
+
+  .services__list-item:nth-child(3) .service-card__media {
+    background-image: url("../../img/services/img--metrology.webp");
+  }
+}

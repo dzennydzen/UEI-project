@@ -1,0 +1,113 @@
+@use "../functions" as *;
+@use "../variables" as *;
+
+.catalog-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 10;
+
+  min-inline-size: fluid-clamp(280px, 395px);
+  padding: fluid-clamp(14px, 20px);
+  border-radius: fluid-clamp(2px, 5px);
+  background-color: $light-gray;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: fluid-clamp(5px, 10px);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: fluid-clamp(7px, 11px);
+    inline-size: 100%;
+    font-size: fluid-clamp(13px, 16px);
+    font-weight: 400;
+    line-height: 150%;
+    color: $base-gray;
+    text-align: start;
+    text-wrap: nowrap;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &[aria-expanded="true"] {
+      color: $black;
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    inline-size: 8px;
+    block-size: 4px;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+
+  &__item[aria-expanded="true"] .catalog-menu__arrow {
+    transform: rotate(-90deg);
+  }
+}
+
+.catalog-menu__panels {
+  .catalog-menu__services {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 5px);
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    gap: fluid-clamp(5px, 10px);
+    min-inline-size: fluid-clamp(280px, 395px);
+    padding: fluid-clamp(14px, 20px);
+    border-radius: fluid-clamp(2px, 5px);
+    background-color: $light-gray;
+
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  #catalog-panel-physics {
+    display: block;
+    columns: 2;
+    column-gap: fluid-clamp(10px, 20px);
+
+    .catalog-menu__service-item {
+      margin-block-end: fluid-clamp(5px, 10px);
+    }
+  }
+
+  .catalog-menu__service-link {
+    text-wrap: nowrap;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $black;
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
