@@ -1723,8 +1723,12 @@
               id="calc-phone"
               name="phone"
               type="tel"
-              placeholder="+7 (___) ___ __ __*"
+              inputmode="numeric"
+              placeholder="+7 (___) ___ __ __"
               autocomplete="tel"
+              maxlength="18"
+              pattern="\+7 \(\d{3}\) \d{3} \d{2} \d{2}"
+              title="Введите номер в формате +7 (999) 999 99 99"
               required
             />
           </div>
@@ -1926,8 +1930,12 @@
               id="consult-phone"
               name="phone"
               type="tel"
+              inputmode="numeric"
               placeholder="Ваш номер телефона*"
               autocomplete="tel"
+              maxlength="18"
+              pattern="\+7 \(\d{3}\) \d{3} \d{2} \d{2}"
+              title="Введите номер в формате +7 (999) 999 99 99"
               required
               aria-label="Ваш номер телефона"
             />
