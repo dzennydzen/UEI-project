@@ -1,0 +1,203 @@
+<div
+  id="modal-calculation"
+  class="modal modal--calculation"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-calculation-title"
+  aria-hidden="true"
+>
+  <div class="modal__dialog">
+    <button
+      type="button"
+      class="modal__close"
+      aria-label="Закрыть"
+      data-modal-close
+    >
+      <img
+        class="modal__close-icon"
+        src="./src/assets/img/icons/icon--close.svg"
+        alt=""
+        aria-hidden="true"
+        width="24"
+        height="24"
+      />
+    </button>
+    <div class="modal__title-container">
+      <h2 id="modal-calculation-title" class="modal__title">
+        <span class="text--accent">Получите расчет стоимости и сроков</span
+        ><br class="modal__title-br modal__title-br--first" />
+        проведения необходимых испытаний<br
+          class="modal__title-br modal__title-br--second"
+        />
+        или диагностики вашего оборудования
+      </h2>
+      <p class="modal__description">
+        Заполните форму и оставьте заявку. Свяжемся с вами в ближайшее время
+        для уточнения деталей, после чего пришлем расчет.
+      </p>
+    </div>
+    <form class="modal__form" action="#" method="post">
+      <div class="modal__field">
+        <label class="modal__label" for="calc-contact">Контактное лицо*</label>
+        <input
+          class="modal__input"
+          id="calc-contact"
+          name="contact"
+          type="text"
+          placeholder="Фамилия Имя Отчество*"
+          autocomplete="name"
+          required
+        />
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="calc-phone">Ваш номер телефона*</label>
+        <input
+          class="modal__input"
+          id="calc-phone"
+          name="phone"
+          type="tel"
+          inputmode="numeric"
+          placeholder="+7 (___) ___ __ __"
+          autocomplete="tel"
+          maxlength="18"
+          pattern="\+7 \(\d{3}\) \d{3} \d{2} \d{2}"
+          title="Введите номер в формате +7 (999) 999 99 99"
+          required
+        />
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="calc-organization"
+          >Название вашей организации*</label
+        >
+        <input
+          class="modal__input"
+          id="calc-organization"
+          name="organization"
+          type="text"
+          placeholder="ООО «Компания»*"
+          autocomplete="organization"
+          required
+        />
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="calc-inn"
+          >ИНН вашей организации*</label
+        >
+        <input
+          class="modal__input"
+          id="calc-inn"
+          name="inn"
+          type="text"
+          maxlength="12"
+          minlength="12"
+          inputmode="numeric"
+          placeholder="000000000000*"
+          required
+        />
+      </div>
+      <div class="modal__field">
+        <label class="modal__label" for="calc-email">Ваш E-mail*</label>
+        <input
+          class="modal__input"
+          id="calc-email"
+          name="email"
+          type="email"
+          placeholder="pochta@mail.ru*"
+          autocomplete="email"
+          required
+        />
+      </div>
+      <fieldset class="modal__radios">
+        <legend class="modal__label">Выберите лабораторию:</legend>
+        <label class="modal__radio">
+          <input type="radio" name="laboratory" value="diagnostics" checked />
+          <span class="modal__radio-control" aria-hidden="true"></span>
+          <span class="modal__radio-text">Лаборатория диагностики</span>
+        </label>
+        <label class="modal__radio">
+          <input type="radio" name="laboratory" value="physics" />
+          <span class="modal__radio-control" aria-hidden="true"></span>
+          <span class="modal__radio-text"
+            >Лаборатория физико-химического анализа</span
+          >
+        </label>
+        <label class="modal__radio">
+          <input type="radio" name="laboratory" value="metrology" />
+          <span class="modal__radio-control" aria-hidden="true"></span>
+          <span class="modal__radio-text">Лаборатория метрологии</span>
+        </label>
+      </fieldset>
+      <div class="modal__upload">
+        <div class="modal__upload-intro">
+          <p class="modal__upload-title">
+            Прикрепите ТЗ, результаты предыдущей диагностики, реквизиты компании
+            или другие файлы
+          </p>
+          <p class="modal__upload-formats">
+            Разрешенные форматы: .pdf, .doc, .docx, .xls, .xlsx, .jpg, .png,
+            .tiff
+          </p>
+        </div>
+        <label class="modal__upload-control">
+          <input
+            class="modal__upload-input"
+            type="file"
+            name="files"
+            multiple
+            accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png,.tiff,.zip,.rar"
+          />
+          <svg
+            class="modal__upload-icon"
+            width="16"
+            height="17"
+            viewBox="0 0 16 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M10.4993 3.7497L4.18879 10.1892C3.90743 10.4706 3.74936 10.8522 3.74936 11.2501C3.74936 11.648 3.90743 12.0296 4.18879 12.311C4.47015 12.5923 4.85176 12.7504 5.24966 12.7504C5.64757 12.7504 6.02918 12.5923 6.31054 12.311L12.621 5.87145C13.1837 5.30883 13.4997 4.54575 13.4997 3.75008C13.4997 2.95441 13.1837 2.19133 12.621 1.6287C12.0584 1.06608 11.2953 0.75 10.4997 0.75C9.70399 0.75 8.94091 1.06608 8.37829 1.6287L2.09404 8.04195C1.67059 8.45856 1.33381 8.95489 1.10314 9.5023C0.872464 10.0497 0.752456 10.6374 0.750037 11.2314C0.747618 11.8254 0.862836 12.4141 1.08904 12.9633C1.31525 13.5126 1.64798 14.0117 2.06802 14.4317C2.48806 14.8518 2.98712 15.1845 3.53639 15.4107C4.08567 15.6369 4.6743 15.7521 5.26832 15.7497C5.86235 15.7473 6.45002 15.6273 6.99744 15.3966C7.54485 15.1659 8.04118 14.8292 8.45779 14.4057L14.742 7.99245"
+              stroke="#404040"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="modal__upload-hint"
+            >Если файлов больше 3, то загрузите их одним архивом</span
+          >
+          <span class="modal__upload-max"
+            >Загружено максимальное количество файлов</span
+          >
+        </label>
+        <ul class="modal__upload-list"></ul>
+      </div>
+      <div class="modal__consents">
+        <label class="modal__check">
+          <input type="checkbox" name="privacy" value="1" checked />
+          <span class="modal__check-control" aria-hidden="true"></span>
+          <span class="modal__check-text">
+            Я даю Согласие на обработку персональных данных в соответствии с
+            условиями
+            <a href="#" class="modal__check-link"
+              >Политики оператора в отношении обработки персональных данных</a
+            >
+          </span>
+        </label>
+        <label class="modal__check">
+          <input type="checkbox" name="newsletter" value="1" checked />
+          <span class="modal__check-control" aria-hidden="true"></span>
+          <span class="modal__check-text">
+            Я даю
+            <a href="#" class="modal__check-link"
+              >Согласие на информационную и рекламную рассылку</a
+            >
+          </span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn--green modal__submit">
+        Оставить заявку
+      </button>
+    </form>
+  </div>
+</div>

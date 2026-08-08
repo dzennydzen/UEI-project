@@ -1,0 +1,94 @@
+<div
+  id="modal-consultation"
+  class="modal modal--consultation"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-consultation-title"
+  aria-hidden="true"
+>
+  <div class="modal__dialog">
+    <button
+      type="button"
+      class="modal__close"
+      aria-label="Закрыть"
+      data-modal-close
+    >
+      <img
+        class="modal__close-icon"
+        src="./src/assets/img/icons/icon--close.svg"
+        alt=""
+        aria-hidden="true"
+        width="24"
+        height="24"
+      />
+    </button>
+    <div class="modal__title-container">
+      <h2 id="modal-consultation-title" class="modal__title">
+        Получите
+        <span class="text--accent">бесплатную консультацию</span>
+      </h2>
+      <div class="modal__lead">
+        <p class="modal__lead-strong">
+          Ответим на все вопросы и поможем подобрать нужную услугу.
+        </p>
+        <p class="modal__lead-text">
+          Свяжемся с вами в ближайшее рабочее время.
+        </p>
+      </div>
+    </div>
+    <form class="modal__form" action="#" method="post">
+      <div class="modal__fields">
+        <input
+          class="modal__input"
+          id="consult-name"
+          name="name"
+          type="text"
+          placeholder="Ваше имя*"
+          autocomplete="name"
+          required
+          aria-label="Ваше имя"
+        />
+        <input
+          class="modal__input"
+          id="consult-phone"
+          name="phone"
+          type="tel"
+          inputmode="numeric"
+          placeholder="Ваш номер телефона*"
+          autocomplete="tel"
+          maxlength="18"
+          pattern="\+7 \(\d{3}\) \d{3} \d{2} \d{2}"
+          title="Введите номер в формате +7 (999) 999 99 99"
+          required
+          aria-label="Ваш номер телефона"
+        />
+      </div>
+      <div class="modal__consents">
+        <label class="modal__check">
+          <input type="checkbox" name="privacy" value="1" checked />
+          <span class="modal__check-control" aria-hidden="true"></span>
+          <span class="modal__check-text">
+            Я даю Согласие на обработку персональных данных в соответствии с
+            условиями
+            <a href="#" class="modal__check-link"
+              >Политики оператора в отношении обработки персональных данных</a
+            >
+          </span>
+        </label>
+        <label class="modal__check">
+          <input type="checkbox" name="newsletter" value="1" checked />
+          <span class="modal__check-control" aria-hidden="true"></span>
+          <span class="modal__check-text">
+            Я даю
+            <a href="#" class="modal__check-link"
+              >Согласие на информационную и рекламную рассылку</a
+            >
+          </span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn--green modal__submit">
+        Получить консультацию
+      </button>
+    </form>
+  </div>
+</div>

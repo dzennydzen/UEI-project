@@ -55,11 +55,6 @@
     flex-shrink: 0;
     inline-size: 8px;
     block-size: 4px;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-  }
-
-  &__item[aria-expanded="true"] .catalog-menu__arrow {
     transform: rotate(-90deg);
   }
 }
